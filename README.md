@@ -28,4 +28,27 @@ Ahora, cuando el jugador cumpla los 38 años, se dará de baja automáticamente 
 
 Recordemos que el objetivo de esta simulación es que el Cruz Azul se consagre como campeón del torneo nacional, así que temporada tras temporada la directiva evaluará los resultados que hayas conseguido, de manera que una temporada no puede ser peor que la pasada, es decir, se debe conseguir una posición en tabla igual o mayor a la que se consiguió en la temporada pasada. Por ejemplo, comenzarás por default en último lugar, así que jugarás la siguiente temporada sin problema, sin embargo, suponiendo que en esa segunda temporada quedas en el lugar 10, y en la siguiente (la tercera), quedas en 11. La directiva te comunicará que ya no desean que constinues como presidente del equipo.
 
-Para la obtención de estas posiciones, se hace una comparación de los puntos de todos los equipos de la liga
+Para la obtención de estas posiciones, se hace una comparación de los puntos de todos los equipos de la liga y para los puntos del equipo se toma en cuenta el promedio de nivel de los jugadores y cuerpo técnico
+
+## Funcionalidad:
+-El programa termina de 3 maneras diferentes:
+  
+  -Cuando se lográ quedar en primer lugar de la tabla de posiciones (caso triunfar)
+  
+  -Cuando se tiene una temporada peor en comparación con la anterior (caso perder)
+  
+  -Cuando se sale de los límites de jugadores en la plantilla (caso perder)
+  
+  -Cuando no puedes pagar los sueldos de los jugadores (caso perder)
+  
+  -Cuando se insertan datos diferentes a los que se solicitan
+
+-Al principio se cuenta con jugadores que sobrepasan la edad de retiro, como lo es José de Jesús Corona, el portero, que tiene 41 años, así que muy probablemente en la primera temporada se vayan muchos jugadores y estés en riesgo de perder
+
+-El programa cuenta con un menu con las opciones iniciales y corre sobre consola, y este menú se desplegará cada que termine una temporada, así como también se presentan todos los resultados cuando termina la temporada.
+
+
+## Consideraciones:
+-Cuando se soliciten datos, se especificará el tipo de dato que se desea que el usuario ingrese, favor de ingresar el tipo de dato esperado y sin espacios intermedios, a menos que se pida lo contrario
+
+
