@@ -53,4 +53,7 @@ Para la obtención de estas posiciones, se hace una comparación de los puntos d
 ## Consideraciones:
 -Cuando se soliciten datos, se especificará el tipo de dato que se desea que el usuario ingrese, favor de ingresar el tipo de dato esperado y sin espacios intermedios, a menos que se pida lo contrario
 
+-Todas las cifras que se mencionen, serán en millones de pesos mexicanos
+
+
 
