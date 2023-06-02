@@ -10,10 +10,10 @@ class Colaborador {
     protected:
     
     string nombre;
+    string tipo;
     int estadisticas[2];
     int nivel;
     double sueldo;
-    int identificador;
         
 
     public: 
@@ -21,6 +21,9 @@ class Colaborador {
     //getters y setters
     string getNombre(){
         return nombre;
+    }
+    string getTipo(){
+        return tipo;
     }
     double getEstadisticas(){
         return estadisticas[2];
@@ -31,8 +34,8 @@ class Colaborador {
     double getSueldo(){
         return sueldo;
     }
-    int getIdentificador(){
-        return identificador;
+    void setTipo(string _tipo){
+        tipo = _tipo;
     }
     void setNivel(int _nivel){
         nivel = _nivel;
@@ -41,9 +44,7 @@ class Colaborador {
         //Declaramos que el sueldo auemnta un 8% cada año
         sueldo = 1.08 * _sueldo;
     }
-    void setIdentificador(int _identificador){
-        identificador = _identificador;
-    }
+
     void setEstadisticas(int _a, int _b){
         estadisticas[0] = _a;
         estadisticas[1] = _b;
@@ -57,27 +58,27 @@ class Colaborador {
     void virtual mostrar_estadisticas(){
     }
 
-
+ 
     //Metodos de la clase
 
     //Método para generar las estadísticas de los colaboradores 
     virtual void genera_estadisticas(){
     }
     //Constructor para la plantilla actual
-    Colaborador(string _nom,int _niv, double _sueldo, int _id){
+    Colaborador(string _nom,string _tipo,int _niv, double _sueldo){
         
         nombre = _nom;
+        tipo = _tipo;
         nivel = _niv;
         sueldo = _sueldo;
-        identificador = _id;
         }
 
     //Constructor por default
     Colaborador(){
         nombre = " ";
+        tipo = " ";
         nivel = 0;
-        sueldo = 0.0;
-        identificador = 0;
+        sueldo = 0.0;;
     }
     
 

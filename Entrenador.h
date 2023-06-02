@@ -28,7 +28,8 @@ class Entrenador : public Colaborador {
             victorias = (int)(nivel / 10);
             derrotas = 17 - victorias;
         }
-
+        estadisticas[0] = victorias;
+        estadisticas[1] = derrotas;
     }
     void setNivel(){
         // Declaramos que el nivel del entrenador aumenta ligeramente conforme pasan los años
@@ -37,19 +38,21 @@ class Entrenador : public Colaborador {
     void mostrar_estadisticas(){
         //Mostramos las estadisticas del entrenador con su nombre
         cout << "Entrenador: " << nombre << endl;
+        cout << "Tipo de entrenador: " << tipo << endl;
+        cout << "Nivel: " << nivel << endl;
+        cout << "Sueldo: " << sueldo <<     " millones de MXN" << endl;
         cout << "Victorias: " << victorias << endl;
         cout << "Derrotas: " << derrotas << endl;
     }
     //Declaramos el constructor por parametros del entrenador, apoyandonos de su clase madre Colaborador
-    Entrenador(string _nombre, int _nivel, double _sueldo, int _identificador): Colaborador(_nombre, _nivel, _sueldo, _identificador){
-        setEstadisticas(nivel);
-    }
+    Entrenador(string _nombre,string _tipo, int _nivel, double _sueldo): Colaborador(_nombre,_tipo, _nivel, _sueldo){
+        setEstadisticas(_nivel);
+    } 
     //Declaramos constructor por default
     Entrenador(){
         nombre = "Entrenador";
         nivel = 0;
         sueldo = 0;
-        identificador = 0;
         setEstadisticas(nivel);
     }
     //Declaramos getters y setters

@@ -10,7 +10,6 @@ class Jugador : public Colaborador {
     protected:
 
     int edad;
-    string posicion;
 
     public:
 
@@ -19,29 +18,27 @@ class Jugador : public Colaborador {
         return edad;
     }
     string getPosicion(){
-        return posicion;
+        return tipo;
     }
     void setEdad(int _edad){
         edad = 1+_edad;
     }
-    void setPosicion(string _posicion){
-        posicion = _posicion;
-    }
     //Definimos esta funcion para hacer sobreescritura, pero no la vamos a usar
-    void setEstadisticas(int _nivel){
+    virtual void setEstadisticas(int _nivel){
         //Declaramos que las estadisticas dependen del nivel del jugador
         estadisticas[0] = 2*_nivel;
         estadisticas[1] = 2*_nivel;
     }
     //Definimos esta funcion para hacer sobreescritura, pero no la vamos a usar
-    void mostrar_estadisticas(){
+    virtual void mostrar_estadisticas(){
         //Mostramos las estadisticas del jugador con su nombre
         cout << "Jugador: " << nombre << endl;
-        cout << "Estadisticas: " << estadisticas[0] << " " << estadisticas[1] << endl;
+        cout << "Edad: " << edad << endl;
+        cout << "Estadisticas: " << estadisticas[0] << "  " << estadisticas[1] << endl;
     }
     //Sobreescribimos setNivel, declarando que el nivel del jugador, disminuye o aumenta dependiendo de su edad y posicion
     void setNivel(){
-        if (posicion == "Delantero" || posicion == "Medio"){
+        if (tipo == "Delantero" || tipo == "Medio"){
             if (edad >= 16 && edad <= 25){
                 nivel = nivel + 2;
             }
@@ -55,7 +52,7 @@ class Jugador : public Colaborador {
                 nivel = nivel - 3;
             }
         }
-        else if (posicion == "Defensa" || posicion == "Portero"){
+        else if (tipo == "Defensa" || tipo == "Portero"){
             if (edad >= 16 && edad <= 27){
                 nivel = nivel + 1;
             }
@@ -66,6 +63,16 @@ class Jugador : public Colaborador {
                 nivel = nivel - 1;
             }
         }
+    }
+    //Creamos un constructor por parametros, apoyandonos de la clase madre Colaborador
+    Jugador(string _nombre, string _tipo, int _nivel, double _sueldo, int _edad): Colaborador(_nombre, _tipo, _nivel, _sueldo){
+        edad = _edad;
+        setEstadisticas(nivel);
+    }
+    //Creamos un constructor por default
+    Jugador(): Colaborador(){
+        edad = 0;           
+        setEstadisticas(nivel);
     }
 };
 #endif
