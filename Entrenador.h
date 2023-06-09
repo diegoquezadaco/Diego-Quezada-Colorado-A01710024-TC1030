@@ -47,7 +47,7 @@ class Entrenador : public Colaborador {
     //Declaramos el constructor por parametros del entrenador, apoyandonos de su clase madre Colaborador
     Entrenador(string _nombre,string _tipo, int _nivel, double _sueldo): Colaborador(_nombre,_tipo, _nivel, _sueldo){
         setEstadisticas(_nivel);
-    } 
+    }  
     //Declaramos constructor por default
     Entrenador(){
         nombre = "Entrenador";

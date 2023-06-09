@@ -20,21 +20,17 @@ class Jugador : public Colaborador {
     string getPosicion(){
         return tipo;
     }
-    void setEdad(int _edad){
-        edad = 1+_edad;
+    void setEdad(){
+        edad = 1+edad;
     }
     //Definimos esta funcion para hacer sobreescritura, pero no la vamos a usar
     virtual void setEstadisticas(int _nivel){
-        //Declaramos que las estadisticas dependen del nivel del jugador
-        estadisticas[0] = 2*_nivel;
-        estadisticas[1] = 2*_nivel;
-    }
+        estadisticas[0] = 1234;
+        estadisticas[1] = 1234;
+        }
     //Definimos esta funcion para hacer sobreescritura, pero no la vamos a usar
     virtual void mostrar_estadisticas(){
-        //Mostramos las estadisticas del jugador con su nombre
-        cout << "Jugador: " << nombre << endl;
-        cout << "Edad: " << edad << endl;
-        cout << "Estadisticas: " << estadisticas[0] << "  " << estadisticas[1] << endl;
+        cout << "Sin estadisticas"<< endl;
     }
     //Sobreescribimos setNivel, declarando que el nivel del jugador, disminuye o aumenta dependiendo de su edad y posicion
     void setNivel(){
@@ -67,7 +63,6 @@ class Jugador : public Colaborador {
     //Creamos un constructor por parametros, apoyandonos de la clase madre Colaborador
     Jugador(string _nombre, string _tipo, int _nivel, double _sueldo, int _edad): Colaborador(_nombre, _tipo, _nivel, _sueldo){
         edad = _edad;
-        setEstadisticas(nivel);
     }
     //Creamos un constructor por default
     Jugador(): Colaborador(){

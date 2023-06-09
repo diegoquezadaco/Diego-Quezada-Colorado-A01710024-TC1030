@@ -3,9 +3,10 @@
 #include <iostream>
 #include <string>
 #include "Jugador.h"
+#include "Colaborador.h"
 using namespace std;
 //Defensivo hereda de Jugador
-class Defensivo : public Jugador {
+class Defensivo : public Jugador{
 
     private:
     int goles_encajados;
@@ -26,19 +27,20 @@ class Defensivo : public Jugador {
         estadisticas[0] = goles_encajados;
         estadisticas[1] = despejados;
     } 
-    void mostrarEstadisticas(){
+    void mostrar_estadisticas(){
         cout << "Jugador: " << nombre << endl;
         cout << "Posicion: " << tipo << endl;
         cout << "Nivel: " << nivel << endl;
         cout << "Sueldo: " << sueldo <<" millones de MXN" << endl;
         cout << "Edad: " << edad << endl;
-        cout << "Goles encajados: " << estadisticas[0] << endl;
-        cout << "Despejes: " << estadisticas[1] << endl;
+        cout << "Goles encajados: " << goles_encajados << endl;
+        cout << "Despejes: " << despejados << endl;
         }
     //Creamos un contructor de Defensivo apoyado en el constructor de Jugador
-    Defensivo(string _nombre, string _tipo, int _nivel, double _sueldo, int _edad) : Jugador(_nombre, _tipo, _nivel, _sueldo, _edad){
-        setEstadisticas(_nivel);
-    }
+    Defensivo(string _nombre, string _tipo, int _nivel, double _sueldo, int _edad) : Jugador(_nombre, _tipo, _nivel, _sueldo, _edad) {
+    setEstadisticas(_nivel);
+}
+
 
     
 };

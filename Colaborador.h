@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-
+//Clase abstracta Colaborador
 class Colaborador {
         
     protected:
@@ -49,21 +49,14 @@ class Colaborador {
         estadisticas[0] = _a;
         estadisticas[1] = _b;
     }
-    virtual void setEstadisticas(int _nivel){
-
-    }
-    virtual void setNivel(){
-
-    }
-    void virtual mostrar_estadisticas(){
-    }
+    //Métodos abstractos que definen esta clase como abstracta
+    virtual void setEstadisticas(int _nivel)=0;
+    virtual void setNivel()=0;
+    void virtual mostrar_estadisticas()=0;
 
  
     //Metodos de la clase
 
-    //Método para generar las estadísticas de los colaboradores 
-    virtual void genera_estadisticas(){
-    }
     //Constructor para la plantilla actual
     Colaborador(string _nom,string _tipo,int _niv, double _sueldo){
         
