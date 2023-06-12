@@ -13,9 +13,9 @@ class Atacante : public Jugador {
     int asistencias;
     
     public:
-    void setEstadisticas(int _nivel){
-        goles_anotados = (int)0.2*_nivel;
-        asistencias = (int)0.1*_nivel;
+    void setEstadisticas(int nivel){
+        goles_anotados = 0.2*nivel;
+        asistencias = 0.1*nivel;
         estadisticas[0] = goles_anotados;
         estadisticas[1] = asistencias;
     }

@@ -79,7 +79,6 @@ class SistemaDatos {
         traspasos[6] = c7;
         Colaborador *c8 = new Defensivo("Raphael Varane", "Defensa", 86, 189.09, 28);
         traspasos[7] = c8;
-        /*
         traspasos[8] = new Defensivo("Kalidou Koulibaly", "Defensa", 88, 189.09, 30);
         traspasos[9] = new Defensivo("Marquinhos", "Defensa", 87, 189.09, 27);
         traspasos[10] = new Defensivo("Alisson", "Portero", 90, 189.09, 29);
@@ -121,11 +120,9 @@ class SistemaDatos {
         traspasos[45] = new Entrenador("Marcelo Bielsa", "Entrenador", 89, 189.09);
         traspasos[46] = new Entrenador("Gian Piero Gasperini", "Preparador fisico", 89, 189.09);
         traspasos[47] = new Entrenador("Thomas Tuchel", "Entrenador", 89, 189.09);
-        traspasos[48] = new Entrenador("Ralph Hasenhuttl", "Entrenador", 89, 189.09);
-        traspasos[49] = new Entrenador("Steven Ge46rrard", "Entrenador", 89, 189.09);
-        traspasos[50] = new Entrenador("Mikel Arteta", "Entrenador", 89, 189.09);
-        
-        */
+        traspasos[48] = new Entrenador("Ralph Hasenhuttl", "Entrenador de porteros", 89, 189.09);
+        traspasos[49] = new Entrenador("Steven Gerrard", "Entrenador de porteros", 89, 189.09);
+        traspasos[50] = new Entrenador("Mikel Arteta", "Entrenador de porteros", 89, 189.09);
         
 
     }
@@ -210,21 +207,11 @@ class SistemaDatos {
     void crea_plantilla_actual() {
         //Definimos los jugadores actuales del Cruz Azul
         Colaborador * c1 = new Defensivo("Jesus Corona", "Portero", 74, 38.595, 42);
-        ((Defensivo*)c1)->setEstadisticas(74);
         Colaborador * c2 = new Defensivo("Andres Gudino", "Portero",68, 6.432, 27);
         Colaborador * c3 = new Defensivo("Sebastian Jurado", "Portero", 68, 14.294, 25);
         plantilla[0] = c1;
         plantilla[1] = c2;
-        plantilla[2] = c3;
-        Colaborador * c27 = new Entrenador("Gustavo Leombruno", "Preparador fisico", 72, 10.4);
-        plantilla[27] = c27;
-        
-        /*
-        plantilla[0] = new Defensivo("Jesus Corona", "Portero", 74, 38.595, 42,1);
-        plantilla[1] = new Defensivo("Andres Gudiño", "Portero",68, 6.432, 27,1);
-        plantilla[2] = new Defensivo("Sebastian Jurado", "Portero", 68, 14.294, 25,1);
-        plantilla[27] = new Entrenador("Gustavo Leombruno", "Preparador fisico", 72, 10.4);
-       ;
+        plantilla[2] = c3;        
         plantilla[3] = new Defensivo("Juan Escobar", "Defensa",75, 1.572, 27);
         plantilla[4] = new Defensivo("Julio Cesar Dominguez", "Defensa", 71, 20.012, 35);
         plantilla[5] = new Defensivo("Jordan Silva", "Defensa", 70, 0.572, 28);
@@ -250,7 +237,6 @@ class SistemaDatos {
         plantilla[25] = new Entrenador("Ricardo Ferretti", "Director Tecnico",82 , 76.10);
         plantilla[26] = new Entrenador("Oscar Perez Rojas", "Entrenador de porteros", 79, 22.5);
         plantilla[27] = new Entrenador("Gustavo Leombruno", "Preparador fisico", 72, 10.4);
-        */
 
 
         
@@ -275,6 +261,7 @@ class SistemaDatos {
                     }
                 }
             }
+            cout <<"____________________________________________________"<< endl;
     }
     void despedir_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
@@ -291,6 +278,7 @@ class SistemaDatos {
                 }
             }
         }
+        cout << "El colaborador " << nombre << " ha sido despedido exitosamente" << endl;
     }
     void contratar_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
@@ -330,6 +318,7 @@ class SistemaDatos {
                 }
             }
         }
+        cout << "El canterano ha sido subido exitosamente" << endl;
     }
     void buscar_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
@@ -384,6 +373,7 @@ class SistemaDatos {
     SistemaDatos(){
         crea_plantilla_actual();
         setTraspasos();
+        setNombresRandom();
     }
     //Constructor con parametros
     SistemaDatos(Colaborador * _plantilla[], int _resultados, double _nivel_equipo[]){
