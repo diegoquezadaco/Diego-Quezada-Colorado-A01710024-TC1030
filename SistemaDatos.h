@@ -250,18 +250,12 @@ class SistemaDatos {
         cout << "Plantilla: " << endl;
         for (int i = 0; i < 30; i++) {
             if (plantilla[i] != nullptr && plantilla[i]->getNivel() != 0) {
-                if (plantilla[i]->getTipo() == "Defensa" || plantilla[i]->getTipo() == "Portero") {
-                    ((Defensivo*)plantilla[i])->mostrar_estadisticas();
-                }
-                else if (plantilla[i]->getTipo() == "Medio" || plantilla[i]->getTipo() == "Delantero") {
-                    ((Atacante*)plantilla[i])->mostrar_estadisticas();
-                }
-                else if (plantilla[i]->getTipo() == "Director Tecnico" || plantilla[i]->getTipo() == "Entrenador de porteros" || plantilla[i]->getTipo() == "Preparador fisico") {
-                    ((Entrenador*)plantilla[i])->mostrar_estadisticas();
-                    }
+                cout << "____________________________________________________"<< endl;
+                plantilla[i]->mostrar_estadisticas();
+                cout <<"____________________________________________________"<< endl;
                 }
             }
-            cout <<"____________________________________________________"<< endl;
+        //regresar al menú principal
     }
     void despedir_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
@@ -283,9 +277,11 @@ class SistemaDatos {
     void contratar_colaborador() {
         //hacemos un for para mostrar todos los colaboradores disponibles en la lista de traspasos:
         cout << "Colaboradores disponibles: " << endl;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 50; i++) {
             if (traspasos[i] != nullptr) {
-                cout << traspasos[i]->getNombre() << endl;
+                cout << "____________________________________________________" << endl;
+                traspasos[i]->mostrar_estadisticas();
+                cout << "____________________________________________________" << endl;
             }
         }
         string d;
@@ -294,10 +290,12 @@ class SistemaDatos {
             if (d == "si") {
                 string nombre;
                 cout << "Ingresa el nombre del colaborador que deseas contratar: ";
+                cin.ignore();
+                getline(cin, nombre);
                 cin >> nombre;
-                for (int i = 0; i < 40; i++) {
+                for (int i = 0; i < 30; i++) {
                 if (traspasos[i]->getNombre() == nombre) {
-                    for (int j = 0; j < 40; j++) {
+                    for (int j = 0; j < 50; j++) {
                         if (plantilla[j] == nullptr) {
                             plantilla[j] = traspasos[i];
                             traspasos[i] = nullptr;
@@ -344,8 +342,15 @@ class SistemaDatos {
     }
     void buscar_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
-            if (plantilla[i] != nullptr && plantilla[i]->getNombre() == nombre) {
+            if (plantilla[i]->getNombre() == nombre) {
                 plantilla[i]->mostrar_estadisticas();
+            }
+        }
+    }
+    void restar_sueldos(){
+        for (int i = 0; i < 30; i++) {
+            if (plantilla[i] != nullptr) {
+                presupuesto -= plantilla[i]->getSueldo();
             }
         }
     }
@@ -363,6 +368,7 @@ class SistemaDatos {
                 else {
                     ((Entrenador*)plantilla[i])->setNivel();
                 }
+                plantilla[i]->setSueldo(plantilla[i]->getSueldo());
             }
         }
         setNivelEquipo();
@@ -370,6 +376,7 @@ class SistemaDatos {
         resultaditos = getResultados();
         setResultados(nivel_equipo);
         setPresupuesto(resultados);
+        restar_sueldos();
         int contador = 0;
         for (int i = 0; i < 30; i++) {
             if (plantilla[i] != nullptr) {
@@ -386,6 +393,17 @@ class SistemaDatos {
             cout << "En la temprada pasada quedo en el lugar " << resultaditos << " y en esta temporada quedo en el lugar " << resultados << endl;
             cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, intentalo de nuevo" << endl;
             parametro = 0;
+        }
+        if (presupuesto <= 0) {
+            cout << "Se quedó sin presupuesto" << endl;
+            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, intentalo de nuevo" << endl;
+            parametro = 0;
+        }
+        if (resultados == 1) {
+            cout << "Felicidades, haz ganado la liga" << endl;
+            cout << "Llevaste al Cruz Azul a su décima gloria" << endl;
+            cout << "Cumpliste el objetivo exitosamente, gracias por tu esfuerzo" << endl;
+            parametro = 2;
         }
         return parametro;
     }
