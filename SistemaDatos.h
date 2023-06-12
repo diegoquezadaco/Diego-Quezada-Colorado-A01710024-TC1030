@@ -280,18 +280,40 @@ class SistemaDatos {
         }
         cout << "El colaborador " << nombre << " ha sido despedido exitosamente" << endl;
     }
-    void contratar_colaborador(string nombre) {
+    void contratar_colaborador() {
+        //hacemos un for para mostrar todos los colaboradores disponibles en la lista de traspasos:
+        cout << "Colaboradores disponibles: " << endl;
         for (int i = 0; i < 30; i++) {
-            if (traspasos[i]->getNombre() == nombre) {
-                for (int j = 0; j < 30; j++) {
-                    if (plantilla[j] == nullptr) {
-                        plantilla[j] = traspasos[i];
-                        traspasos[i] = nullptr;
-                        break;
+            if (traspasos[i] != nullptr) {
+                cout << traspasos[i]->getNombre() << endl;
+            }
+        }
+        string d;
+            cout << "¿Desea contratar algun colaborador? (si/no): ";
+            cin >> d;
+            if (d == "si") {
+                string nombre;
+                cout << "Ingresa el nombre del colaborador que deseas contratar: ";
+                cin >> nombre;
+                for (int i = 0; i < 40; i++) {
+                if (traspasos[i]->getNombre() == nombre) {
+                    for (int j = 0; j < 40; j++) {
+                        if (plantilla[j] == nullptr) {
+                            plantilla[j] = traspasos[i];
+                            traspasos[i] = nullptr;
+                            break;
+                        //recorremos la lista de traspasos al lugar que se quedó vacio lo movemos una posición a la izquierda
+                        for (int k = i; k < 30; k++) {
+                            traspasos[k] = traspasos[k - 1];
+                            traspasos[k] = nullptr;
+                        }
                     }
                 }
             }
         }
+            } else {
+                cout << "Esta bien, regresando al menu principal" << endl;
+            }
     }
     void subir_canterano(string posicion){
         if (posicion== "Portero" || posicion=="Defensa"){

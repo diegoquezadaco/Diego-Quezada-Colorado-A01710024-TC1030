@@ -36,23 +36,8 @@ int main() {
             system("cls"); // Limpia la pantalla
             
         } else if (opcion == 2) {
-            cout << "Estos son los colaboradores disponibles: " << endl;
-            for (int i = 0; i < 50; i++) {
-                cout << i+1  << ". " << sistemita.getTraspasos()[i].getNombre() << endl;
-                sistemita.getTraspasos()[i].mostrar_estadisticas();
-
-            }
-            string d;
-            cout << "¿Desea contratar algun colaborador? (si/no): ";
-            cin >> d;
-            if (d == "si") {
-                string nombre;
-                cout << "Ingresa el nombre del colaborador que deseas contratar: ";
-                cin >> nombre;
-                sistemita.contratar_colaborador(nombre);
-            } else {
-                cout << "Esta bien, regresando al menu principal" << endl;
-            }
+            cout << "Ingresando al sistema de traspasos.. " << endl;
+            sistemita.contratar_colaborador();          
             cout << "Presione ENTER para regresar al menu principal...";
             cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
             cin.get(); // Esperar a que se presione ENTER para continuar
