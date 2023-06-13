@@ -41,7 +41,7 @@ Para la obtención de estas posiciones, se hace una comparación de los puntos d
   
   -Cuando ya no puedes pagar los sueldos de la plantilla (caso perder)
   
-  -Cuando tienes menos de 2 porteros, 6 defensas, 6 medios o 3 delanteros.
+  -Cuando tienes menos de 1 porteros, 4 defensas, 4 medios , 3 delanteros o 1 entrenador.
   
   -Cuando se insertan datos diferentes a los que se solicitan
 
