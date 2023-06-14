@@ -17,7 +17,9 @@ int main() {
     cout << "A continuacion te presentamos el menu de opciones" << endl;
     
     while (opcion != 8) {
-        cout << "1. Mostrar datos de la plantilla actual (Unica opcion que funciona)" << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "Bienvenido a la nueva temporada, te deseamos el mayor de los exitos." << endl;
+        cout << "1. Mostrar datos de la plantilla actual" << endl;
         cout << "2. Consultar presupuesto" << endl;
         cout << "3. Contratar un nuevo colaborador" << endl;
         cout << "4. Despedir un colaborador" << endl;
@@ -27,6 +29,7 @@ int main() {
         cout << "8. Salir" << endl;
         cout << "Ingresa el numero de la opcion que deseas realizar: ";
         cin >> opcion;
+        cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
         
         if (opcion == 1) {
             sistemita.imprimeDatos();
@@ -34,25 +37,25 @@ int main() {
             cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
             cin.get(); // Esperar a que se presione ENTER para continuar
         } else if (opcion ==2){
-            cout << "El presupuesto actual es de: " << sistemita.getPresupuesto() <<" millones de MXN"<< endl;
+            cout << "El presupuesto actual es de: " << sistemita.getPresupuesto(sistemita.getResultados()) <<" millones de MXN"<< endl;
             cout << "Presione ENTER para regresar al menu principal...";
             cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
             cin.get(); // Esperar a que se presione ENTER para continuar
-        }else if (opcion == 3) {
+        } else if (opcion == 3) {
             cout << "Ingresando al sistema de traspasos.. " << endl;
-            sistemita.contratar_colaborador();          
-            cout << "Presione ENTER para regresar al menu principal...";
-            cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
+            sistemita.contratar_colaborador();
+            cout << "Presione ENTER para regresar al menú principal...";
+            cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
             cin.get(); // Esperar a que se presione ENTER para continuar
-        } else if (opcion == 4) {
+
+        }  else if (opcion == 4) {
             string nombre;
-            cout << "Ingresa el nombre del colaborador que deseas despedir: ";
-            cin >> nombre;
+            cout << "Ingresa el nombre del colaborador que deseas despedir: (favor de poner un espacio antes de poner el nombre)";
+            cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
+            getline(cin, nombre); // Leer el nombre del colaborador
             sistemita.despedir_colaborador(nombre);
-            cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
-            cin.get(); // Esperar a que se presione ENTER para continuar
-            cout << "Presione ENTER para regresar al menu principal...";
-            cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
+            cout << "Presione ENTER para regresar al menú principal...";
+            cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
             cin.get(); // Esperar a que se presione ENTER para continuar
         } else if (opcion == 5) {
             string nombre;
@@ -87,20 +90,26 @@ int main() {
             cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
             cin.get(); // Esperar a que se presione ENTER para continuar
         } else if (opcion == 7) {
-            sistemita.pasar_temporada();
-            if (sistemita.pasar_temporada() == 0){
+            int numerito;
+            numerito = sistemita.pasar_temporada();
+            if (numerito == 0){
                 cout << "Hasta la próxima, intentelo nuevamente" << endl;
                 opcion = 8;
-            } else if (sistemita.pasar_temporada() == 1){
+            } else if (numerito == 1){
+                cout << "Ha cumplido los requisitos" << endl;
+                cout << "La directiva ha decidido contar con sus servicios una temporada mas :) " << endl;
                 cout << "Presione ENTER para regresar al menu principal...";
                 cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
                 cin.get(); // Esperar a que se presione ENTER para continuar
-            } else if (sistemita.pasar_temporada() == 2){
-                cout << "Presione ENTER para regresar al menu principal...";
+            } else if (numerito == 2){
+                cout << "Gracias por todo";
+                cout << "Presione ENTER para terminar el programa.";
                 cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
                 cin.get(); // Esperar a que se presione ENTER para continuar
                 opcion = 8;
             }
+            
+            
         } else if (opcion == 8) {
             cout << "Gracias por usar el programa" << endl;
         } else {

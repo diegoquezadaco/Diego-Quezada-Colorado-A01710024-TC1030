@@ -30,133 +30,127 @@ class SistemaDatos {
     //Declaramos los atributos de un equipo, variables de instancia
 
     Colaborador * plantilla[35]; //Dejamos 5 vacios para que se pueda pasar
-    double presupuesto=0; //El presupuesto inicial del equipo es de 0
+    double presupuesto = 0; //El presupuesto inicial del equipo es de 0
     Colaborador * traspasos[50];
-    int resultados;
-    double nivel_equipo[30];
+    int resultados = 18;
     string nombres_random[40];
 
     public:
 
     //getters y setters
-    Colaborador * getPlantilla(){
+    Colaborador * getPlantilla() {
         return *plantilla;
     }
-    double getPresupuesto(){
+    double getPresupuesto(int _resultado) {    
+        setPresupuesto(_resultado);
+        restar_sueldos();
         return presupuesto;
     }
-    Colaborador * getTraspasos(){
+    double getPresupuesto() {
+        return presupuesto;
+    }
+    Colaborador * getTraspasos() {
         return *traspasos;
     }
-    int getResultados(){           
+    int getResultados() {           
         return resultados;
     }
-    double getNivel_equipo(){
-        return *nivel_equipo;
+    double getNivelEquipo() {
+        // Sacamos el promedio de los niveles de los jugadores y eso nos dará el nivel del equipo
+        double promedio = 0.0;
+        int contador = 0;
+        for (int i = 0; i < 34; i++) {
+            if (plantilla[i] != nullptr) {
+                promedio += plantilla[i]->getNivel();
+                contador++;
+            }
+        }
+        if (contador != 0) {
+            promedio = promedio / contador;
+        }
+        return promedio;
     }
     void setPlantilla(Colaborador * _plantilla[]){
         *plantilla = *_plantilla;
     }
     void setPresupuesto(int _resultado){
         //Declaramos que el presupuesto depende de los resultados del equipo
-        presupuesto = 1200 - (50 * (_resultado - 1)); 
+        presupuesto = 1500 - (50 * (_resultado - 1)); 
     }
     void setTraspasos(){
         //Importamos los niveles de FIFA 23 de los jugadores que se pueden comprar
-        Colaborador *c1 = new Defensivo("Sergio Ramos", "Defensa", 84, 144.107, 34);
-        traspasos[0] = c1;
-        Colaborador *c2 = new Defensivo("David Alaba", "Defensa", 86, 189.09, 29);
-        traspasos[1] = c2;
-        Colaborador *c3 = new Defensivo("Virgil van Dijk", "Defensa", 90, 189.09, 30);
-        traspasos[2] = c3;
-        Colaborador *c4 = new Defensivo("Trent Alexander-Arnold", "Defensa", 87, 189.09, 23);
-        traspasos[3] = c4;
-        Colaborador *c5 = new Defensivo("Andrew Robertson", "Defensa", 87, 189.09, 27);
-        traspasos[4] = c5;
-        Colaborador *c6 = new Defensivo("Joe Gomez", "Defensa", 90, 189.09, 29);
-        traspasos[5] = c6;
-        Colaborador *c7 = new Defensivo("Aymeric Laporte", "Defensa", 87, 189.09, 27);
-        traspasos[6] = c7;
-        Colaborador *c8 = new Defensivo("Raphael Varane", "Defensa", 86, 189.09, 28);
-        traspasos[7] = c8;
-        traspasos[8] = new Defensivo("Kalidou Koulibaly", "Defensa", 88, 189.09, 30);
-        traspasos[9] = new Defensivo("Marquinhos", "Defensa", 87, 189.09, 27);
-        traspasos[10] = new Defensivo("Alisson", "Portero", 90, 189.09, 29);
-        traspasos[11] = new Defensivo("Marc-Andre ter Stegen", "Portero", 90, 189.09, 29);
-        traspasos[12] = new Defensivo("Jan Oblak", "Portero", 91, 189.09, 28);
-        traspasos[13] = new Atacante("Pedro Gonzalez Lopez", "Medio", 85, 189.09, 28);
-        traspasos[14]= new Atacante("Kevin De Bruyne", "Medio", 91, 189.09, 30);
-        traspasos[15] = new Atacante("Luka Modric", "Medio", 87, 189.09, 36);
-        traspasos[16] = new Atacante("N'Golo Kante", "Medio", 88, 189.09, 30);
-        traspasos[17] = new Atacante("Frenkie de Jong", "Medio", 87, 189.09, 24);
-        traspasos[18] = new Atacante("Bruno Fernandes", "Medio", 88, 189.09, 27);
-        traspasos[19] = new Atacante("Toni Kroos", "Medio", 88, 189.09, 31);
-        traspasos[20] = new Atacante("Joshua Kimmich", "Medio", 88, 189.09, 26);
-        traspasos[21] = new Atacante("Casemiro", "Medio", 89, 189.09, 29);
-        traspasos[22] = new Atacante("Jordan Henderson", "Medio", 86, 189.09, 31);
-        traspasos[23] = new Atacante("Sadio Mane", "Medio", 89, 189.09, 29);
-        traspasos[24] = new Atacante("Raheem Sterling", "Medio", 89, 189.09, 26);
-        traspasos[25] = new Atacante("Lionel Messi", "Delantero", 93, 189.09, 34);
-        traspasos[25] = new Atacante("Cristiano Ronaldo", "Delantero", 92, 189.09, 36);
-        traspasos[26] = new Atacante("Kylian Mbappe", "Delantero", 91, 189.09, 22);
-        traspasos[27]= new Atacante("Neymar Jr", "Delantero", 91, 189.09, 29);
-        traspasos[28] = new Atacante("Robert Lewandowski", "Delantero", 92, 189.09, 33);
-        traspasos[29] = new Atacante("Karim Benzema", "Delantero", 89, 189.09, 33);
-        traspasos[30] = new Atacante("Erling Haaland", "Delantero", 89, 189.09, 21);
-        traspasos[31] = new Atacante("Harry Kane", "Delantero", 89, 189.09, 28);
-        traspasos[32] = new Atacante("Mohamed Salah", "Delantero", 89, 189.09, 29);
-        traspasos[33] = new Entrenador("Jose Mourinho", "Entrenador", 89, 189.09);
-        traspasos[34] = new Entrenador("Pep Guardiola", "Entrenador", 89, 189.09);
-        traspasos[35] = new Entrenador("Jurgen Klopp", "Entrenador", 89, 189.09);
-        traspasos[36] = new Entrenador("Zinedine Zidane", "Entrenador", 89, 189.09);
-        traspasos[37] = new Entrenador("Diego Simeone", "Entrenador", 89, 189.09);
-        traspasos[38] = new Entrenador("Carlo Ancelotti", "Entrenador", 89, 189.09);
-        traspasos[39] = new Entrenador("Julian Nagelsmann", "Entrenador", 89, 189.09);
-        traspasos[40] = new Entrenador("Mauricio Pochettino", "Entrenador", 89, 189.09);
-        traspasos[41] = new Entrenador("Antonio Conte", "Entrenador", 89, 189.09);
-        traspasos[42] = new Entrenador("Ronald Koeman", "Entrenador", 89, 189.09);
-        traspasos[43] = new Entrenador("Ole Gunnar Solskjaer", "Entrenador", 89, 189.09);
-        traspasos[44] = new Entrenador("Brendan Rodgers", "Entrenador", 89, 189.09);
-        traspasos[45] = new Entrenador("Marcelo Bielsa", "Entrenador", 89, 189.09);
-        traspasos[46] = new Entrenador("Gian Piero Gasperini", "Preparador fisico", 89, 189.09);
-        traspasos[47] = new Entrenador("Thomas Tuchel", "Entrenador", 89, 189.09);
-        traspasos[48] = new Entrenador("Ralph Hasenhuttl", "Entrenador de porteros", 89, 189.09);
-        traspasos[49] = new Entrenador("Steven Gerrard", "Entrenador de porteros", 89, 189.09);
-        traspasos[50] = new Entrenador("Mikel Arteta", "Entrenador de porteros", 89, 189.09);
-        
-
-    }
-    void setNivelEquipo(double _nivel_equipo[]){
-        *nivel_equipo = *_nivel_equipo;
-    }
-    void setNivelEquipo(){
-        //Declaramos que el nivel del equipo depende de los jugadores que lo conforman
-        for (int i = 0; i < 30; i++){
-            nivel_equipo[i] = plantilla[i]->getNivel();
-        }
+        traspasos[0] = new Defensivo("Sergio Ramos", "Defensa", 84, 144.107, 34);
+        traspasos[1] = new Defensivo("David Alaba", "Defensa", 86, 362, 29);
+        traspasos[2] = new Defensivo("Virgil van Dijk", "Defensa", 90, 269.21, 30);
+        traspasos[3] = new Defensivo("Trent Alexander Arnold", "Defensa", 87, 121, 23);
+        traspasos[4] = new Defensivo("Andrew Robertson", "Defensa", 87, 95.5, 27);
+        traspasos[5] = new Defensivo("Joe Gomez", "Defensa", 90, 65.3, 29);
+        traspasos[6] = new Defensivo("Aymeric Laporte", "Defensa", 87, 102.8, 27);
+        traspasos[7] = new Defensivo("Raphael Varane", "Defensa", 86, 150.4, 28);
+        traspasos[8] = new Defensivo("Kalidou Koulibaly", "Defensa", 88, 69.7, 30);
+        traspasos[9] = new Defensivo("Marquinhos", "Defensa", 87, 156.8, 27);
+        traspasos[10] = new Defensivo("Alisson", "Portero", 90, 200.4, 29);
+        traspasos[11] = new Defensivo("Marc-Andre ter Stegen", "Portero", 90, 181.6, 29);
+        traspasos[12] = new Defensivo("Jan Oblak", "Portero", 91, 250.4, 28);
+        traspasos[13] = new Atacante("Pedro Gonzalez Lopez", "Medio", 85, 94.2, 28);
+        traspasos[14] = new Atacante("Kevin De Bruyne", "Medio", 91, 300.2, 30);
+        traspasos[15] = new Atacante("Luka Modric", "Medio", 87, 288.9, 36);
+        traspasos[16] = new Atacante("N Golo Kante", "Medio", 88, 351.7, 30);
+        traspasos[17] = new Atacante("Frenkie de Jong", "Medio", 87, 156.2, 24);
+        traspasos[18] = new Atacante("Bruno Fernandes", "Medio", 88, 271.3, 27);
+        traspasos[19] = new Atacante("Toni Kroos", "Medio", 88, 325.7, 31);
+        traspasos[20] = new Atacante("Joshua Kimmich", "Medio", 88, 196.1, 26);
+        traspasos[21] = new Atacante("Casemiro", "Medio", 89, 304.8, 29);
+        traspasos[22] = new Atacante("Jordan Henderson", "Medio", 86, 282.4, 31);
+        traspasos[23] = new Atacante("Sadio Mane", "Medio", 89, 277.4, 29);
+        traspasos[24] = new Atacante("Raheem Sterling", "Medio", 89, 147.5, 26);
+        traspasos[25] = new Atacante("Lionel Messi", "Delantero", 93, 740.7, 34);
+        traspasos[25] = new Atacante("Cristiano Ronaldo", "Delantero", 92, 3720.4, 36);
+        traspasos[26] = new Atacante("Kylian Mbappe", "Delantero", 91, 729.1, 22);
+        traspasos[27] = new Atacante("Neymar Jr", "Delantero", 91, 625.9, 29);
+        traspasos[28] = new Atacante("Robert Lewandowski", "Delantero", 92, 364.9, 33);
+        traspasos[29] = new Atacante("Karim Benzema", "Delantero", 89, 431.8, 33);
+        traspasos[30] = new Atacante("Erling Haaland", "Delantero", 89, 395.4, 21);
+        traspasos[31] = new Atacante("Harry Kane", "Delantero", 89, 261.7, 28);
+        traspasos[32] = new Atacante("Mohamed Salah", "Delantero", 89, 247.4, 29);
+        traspasos[33] = new Entrenador("Jose Mourinho", "Entrenador", 94, 1005.7);
+        traspasos[34] = new Entrenador("Pep Guardiola", "Entrenador", 97, 2400.8 );
+        traspasos[35] = new Entrenador("Jurgen Klopp", "Entrenador", 91, 975.4);
+        traspasos[36] = new Entrenador("Zinedine Zidane", "Entrenador", 92, 1541.3);
+        traspasos[37] = new Entrenador("Diego Simeone", "Entrenador", 88, 1274.8);
+        traspasos[38] = new Entrenador("Carlo Ancelotti", "Entrenador", 92, 1877.7);
+        traspasos[39] = new Entrenador("Julian Nagelsmann", "Entrenador", 80, 504.9);
+        traspasos[40] = new Entrenador("Mauricio Pochettino", "Entrenador", 85, 856.1);
+        traspasos[41] = new Entrenador("Antonio Conte", "Entrenador", 87, 1028.4);
+        traspasos[42] = new Entrenador("Ronald Koeman", "Entrenador", 84, 856.1);
+        traspasos[43] = new Entrenador("Ole Gunnar Solskjaer", "Entrenador", 83,695.7 );
+        traspasos[44] = new Entrenador("Brendan Rodgers", "Entrenador", 76, 504.9);
+        traspasos[45] = new Entrenador("Marcelo Bielsa", "Preparador fisico", 82, 324.9);
+        traspasos[46] = new Entrenador("Gian Piero Gasperini", "Preparador fisico", 83, 350.1);
+        traspasos[47] = new Entrenador("Thomas Tuchel", "Preparador fisico", 91, 452.1);
+        traspasos[48] = new Entrenador("Ralph Hasenhuttl", "Entrenador de porteros", 84, 364.2);
+        traspasos[49] = new Entrenador("Steven Gerrard", "Entrenador de porteros", 92, 379.1);
+        traspasos[50] = new Entrenador("Mikel Arteta", "Entrenador de porteros", 95, 408.5);
     }
     void setResultados(int _resultados){
         resultados = _resultados;
     }
-    void setResultados (double _nivel_equipo[]){
+    void setResultados (){
         //Declaramos que los resultados dependen de los jugadores que conforman el equipo, y de su nivel
         //Sacamos el promedio de los niveles de los colaboradores y eso nos dara su posición en tabla del 1 al 18
-        double promedio = 0;
-        for (int i = 0; i < 30; i++){
-            promedio += _nivel_equipo[i];
-        }
-        promedio = promedio / 30;
+        double promedio;
+        promedio = getNivelEquipo();
         //Si el promedio es 90 o mayor, el equipo quedara en primer lugar
         //Si el promedio es 55 o menor, el equipo quedara en ultimo lugar es decir resultados seria 18
         //Si el promedio es 56 o mayor y 89 o menor, el equipo quedara en su correspondiente posicion
-        if (promedio >= 90){
+        if (promedio >= 81){
             resultados = 1;
         }
         else if (promedio <= 55){
             resultados = 18;
         }
         else{
-            resultados = 18 - (int)((promedio - 55) / 2);
+            resultados = 18 - ((promedio - 47) / 2);
         }
     }
     void setNombresRandom(){
@@ -164,10 +158,10 @@ class SistemaDatos {
         nombres_random[1] = "Miguel Angel Rodriguez";
         nombres_random[2] = "Carlos Hernandez Garcia";
         nombres_random[3] = "Juan Antonio Lopez";
-        nombres_random[4] = "Pedro Martinez Fernandez";
+        nombres_random[4] = "Diego Lira Garcia";
         nombres_random[5] = "Luis Alberto Sanchez";
         nombres_random[6] = "Fernando Gonzalez Ramirez";
-        nombres_random[7] = "Jorge Torres Diaz";
+        nombres_random[7] = "Jorge Espinosa Callejas";
         nombres_random[8] = "Alejandro Vargas Herrera";
         nombres_random[9] = "Ricardo Rivera Jimenez";
         nombres_random[10] = "Mario Mendoza Ortiz";
@@ -206,12 +200,9 @@ class SistemaDatos {
 
     void crea_plantilla_actual() {
         //Definimos los jugadores actuales del Cruz Azul
-        Colaborador * c1 = new Defensivo("Jesus Corona", "Portero", 74, 38.595, 42);
-        Colaborador * c2 = new Defensivo("Andres Gudino", "Portero",68, 6.432, 27);
-        Colaborador * c3 = new Defensivo("Sebastian Jurado", "Portero", 68, 14.294, 25);
-        plantilla[0] = c1;
-        plantilla[1] = c2;
-        plantilla[2] = c3;        
+        plantilla[0] = new Defensivo("Jesus Corona", "Portero", 74, 38.595, 42);
+        plantilla[1] = new Defensivo("Andres Gudino", "Portero",68, 6.432, 27);
+        plantilla[2] = new Defensivo("Sebastian Jurado", "Portero", 68, 14.294, 25);       
         plantilla[3] = new Defensivo("Juan Escobar", "Defensa",75, 1.572, 27);
         plantilla[4] = new Defensivo("Julio Cesar Dominguez", "Defensa", 71, 20.012, 35);
         plantilla[5] = new Defensivo("Jordan Silva", "Defensa", 70, 0.572, 28);
@@ -237,6 +228,13 @@ class SistemaDatos {
         plantilla[25] = new Entrenador("Ricardo Ferretti", "Director Tecnico",82 , 76.10);
         plantilla[26] = new Entrenador("Oscar Perez Rojas", "Entrenador de porteros", 79, 22.5);
         plantilla[27] = new Entrenador("Gustavo Leombruno", "Preparador fisico", 72, 10.4);
+        plantilla[28] = nullptr;
+        plantilla[29] = nullptr;
+        plantilla[30] = nullptr;
+        plantilla[31] = nullptr;
+        plantilla[32] = nullptr;
+        plantilla[33] = nullptr;
+        plantilla[34] = nullptr;
 
 
         
@@ -248,34 +246,46 @@ class SistemaDatos {
 
     void imprimeDatos() {
         cout << "Plantilla: " << endl;
-        for (int i = 0; i < 30; i++) {
-            if (plantilla[i] != nullptr && plantilla[i]->getNivel() != 0) {
+        int colaboradores = 0;
+        for (int i = 0; i < 34; i++) {
+            if (plantilla[i] != nullptr) {
                 cout << "____________________________________________________"<< endl;
                 plantilla[i]->mostrar_estadisticas();
+                colaboradores++;
                 cout <<"____________________________________________________"<< endl;
                 }
             }
+        cout << "Total de colaboradores: " << colaboradores << endl;
         //regresar al menú principal
     }
     void despedir_colaborador(string nombre) {
-        for (int i = 0; i < 30; i++) {
+        bool encontrado = false; // Variable para verificar si se encuentra al colaborador a despedir
+
+        for (int i = 0; i < 34; i++) {
             if (plantilla[i] != nullptr && plantilla[i]->getNombre() == nombre) {
                 plantilla[i] = nullptr;
+                encontrado = true; // Se ha encontrado al colaborador a despedir
+                break;
             }
         }
-        //hacemos un for para recorrer la plantilla al lugar que se quedó vacio lo movemos una posición a la izquierda
-        for (int i = 0; i < 30; i++) {
-            if (plantilla[i] == nullptr) {
-                for (int j = i; j < 30; j++) {
-                    plantilla[j] = plantilla[j - 1];
-                    plantilla [j] = nullptr;
+        if (encontrado) {
+            // Recorremos la plantilla para mover una posición a la izquierda los elementos
+            for (int i = 0; i < 33; i++) {
+                if (plantilla[i] == nullptr) {
+                    for (int j = i; j < 33; j++) {
+                        plantilla[j] = plantilla[j + 1];
+                        plantilla[j + 1] = nullptr;
+                    }
                 }
             }
+            cout << "El colaborador " << nombre << " ha sido despedido exitosamente" << endl;
+        } else {
+            cout << "No se encontró al colaborador " << nombre << " en la plantilla" << endl;
         }
-        cout << "El colaborador " << nombre << " ha sido despedido exitosamente" << endl;
     }
+
     void contratar_colaborador() {
-        //hacemos un for para mostrar todos los colaboradores disponibles en la lista de traspasos:
+        // Mostramos todos los colaboradores disponibles en la lista de traspasos
         cout << "Colaboradores disponibles: " << endl;
         for (int i = 0; i < 50; i++) {
             if (traspasos[i] != nullptr) {
@@ -284,71 +294,89 @@ class SistemaDatos {
                 cout << "____________________________________________________" << endl;
             }
         }
-        string d;
-            cout << "¿Desea contratar algun colaborador? (si/no): ";
-            cin >> d;
-            if (d == "si") {
-                string nombre;
-                cout << "Ingresa el nombre del colaborador que deseas contratar: ";
-                cin.ignore();
-                getline(cin, nombre);
-                cin >> nombre;
-                for (int i = 0; i < 30; i++) {
-                if (traspasos[i]->getNombre() == nombre) {
-                    for (int j = 0; j < 50; j++) {
+
+        string respuesta;
+        cout << "¿Desea contratar algún colaborador? (si/no): ";
+        cin >> respuesta;
+
+        if (respuesta == "si") {
+            string nombre;
+            cout << "Ingresa el nombre del colaborador que deseas contratar: ";
+            cin.ignore();
+            getline(cin, nombre);
+
+            for (int i = 0; i < 50; i++) {
+                if (traspasos[i] != nullptr && traspasos[i]->getNombre() == nombre) {
+                    for (int j = 0; j < 34; j++) {
                         if (plantilla[j] == nullptr) {
                             plantilla[j] = traspasos[i];
                             traspasos[i] = nullptr;
+                            cout << "El colaborador " << nombre << " ha sido contratado exitosamente" << endl;
+
+                            // Movemos una posición a la izquierda los elementos en la lista de traspasos
+                            for (int k = i; k < 49; k++) {
+                                traspasos[k] = traspasos[k + 1];
+                            }
+                            traspasos[49] = nullptr;
                             break;
-                        //recorremos la lista de traspasos al lugar que se quedó vacio lo movemos una posición a la izquierda
-                        for (int k = i; k < 30; k++) {
-                            traspasos[k] = traspasos[k - 1];
-                            traspasos[k] = nullptr;
+                        } else {
+                            cout << "No se encontro al colaborador " << nombre << endl;
+                            cout << "Intentelo de nuevo" << endl;
+                            break;
                         }
                     }
+                    break;
                 }
             }
+        } else {
+            cout << "Está bien, regresando al menú principal" << endl;
         }
-            } else {
-                cout << "Esta bien, regresando al menu principal" << endl;
-            }
     }
-    void subir_canterano(string posicion){
-        if (posicion== "Portero" || posicion=="Defensa"){
-            for (int i = 0; i < 30; i++) {
+    void subir_canterano(string posicion) {
+        if (posicion == "Portero" || posicion == "Defensa") {
+            for (int i = 0; i < 34; i++) {
                 if (plantilla[i] == nullptr) {
-                    for (int k = 0; k < 50; k++) {
+                    for (int k = 0; k < 40; k++) {
                         if (nombres_random[k] != "") {
                             plantilla[i] = new Defensivo(nombres_random[k], posicion, 65, 0.1, 16);
+                            plantilla[i]->mostrar_estadisticas();
                             nombres_random[k] = "";
+                            cout << "El canterano ha sido subido exitosamente" << endl;
+                            return;
                         }
                     }
                 }
             }
         }
         else if (posicion == "Medio" || posicion == "Delantero") {
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < 34; i++) {
                 if (plantilla[i] == nullptr) {
-                    for (int k = 0; k < 50; k++) {
+                    for (int k = 0; k < 40; k++) {
                         if (nombres_random[k] != "") {
                             plantilla[i] = new Atacante(nombres_random[k], posicion, 65, 0.1, 16);
                             nombres_random[k] = "";
+                            cout << "El canterano ha sido subido exitosamente" << endl;
+                            return;
                         }
                     }
                 }
             }
         }
-        cout << "El canterano ha sido subido exitosamente" << endl;
+        cout << "No se pudo subir al canterano" << endl;
     }
+
     void buscar_colaborador(string nombre) {
         for (int i = 0; i < 30; i++) {
             if (plantilla[i]->getNombre() == nombre) {
                 plantilla[i]->mostrar_estadisticas();
             }
+            else {
+                cout << "No se encontró al colaborador " << nombre << " en la plantilla" << endl;
+            }
         }
     }
     void restar_sueldos(){
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 34; i++) {
             if (plantilla[i] != nullptr) {
                 presupuesto -= plantilla[i]->getSueldo();
             }
@@ -356,53 +384,95 @@ class SistemaDatos {
     }
     int pasar_temporada() {
         int parametro = 1;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 34; i++) {
             if (plantilla[i] != nullptr) {
-                if (plantilla[i]->getTipo() == "Portero" || plantilla[i]->getTipo() == "Defensa"|| plantilla[i]->getTipo() == "Medio" || plantilla[i]->getTipo() == "Delantero") {
-                    ((Jugador*)plantilla[i])->setNivel();
-                    ((Jugador*)plantilla[i])->setEdad();
-                    if (((Jugador*)plantilla[i])->getEdad() >= 38) {
-                        despedir_colaborador(plantilla[i]->getNombre());
+                if (plantilla[i]->getTipo() == "Portero" || plantilla[i]->getTipo() == "Defensa" || plantilla[i]->getTipo() == "Medio" || plantilla[i]->getTipo() == "Delantero") {
+                    Jugador* jugador = dynamic_cast<Jugador*>(plantilla[i]);
+                    if (jugador != nullptr) {
+                        jugador->setEdad();
+                        jugador->setNivel();
+                        
+                        if (jugador->getEdad() >= 38) {
+                            despedir_colaborador(plantilla[i]->getNombre());
+                        }
                     }
                 }
                 else {
-                    ((Entrenador*)plantilla[i])->setNivel();
+                    Entrenador* entrenador = dynamic_cast<Entrenador*>(plantilla[i]);
+                    if (entrenador != nullptr) {
+                        entrenador->setNivel();
+                    }
                 }
                 plantilla[i]->setSueldo(plantilla[i]->getSueldo());
             }
         }
-        setNivelEquipo();
-        int resultaditos;
-        resultaditos = getResultados();
-        setResultados(nivel_equipo);
-        setPresupuesto(resultados);
+        // Definimos un for para verificar si el equipo cumple los requisitos
+        cout << "Verificando si el equipo cumple los requisitos..." << endl;
+        int porteros = 0;
+        int defensas = 0;
+        int medios = 0;
+        int delanteros = 0;
+        int entrenadores = 0;
+        for (int i = 0; i < 34; i++) {
+            if (plantilla[i] != nullptr) {
+                if (plantilla[i]->getTipo() == "Portero") {
+                    porteros++;
+                }
+                else if (plantilla[i]->getTipo() == "Defensa") {
+                    defensas++;
+                }
+                else if (plantilla[i]->getTipo() == "Medio") {
+                    medios++;
+                }
+                else if (plantilla[i]->getTipo() == "Delantero") {
+                    delanteros++;
+                }
+                else {
+                    entrenadores++;
+                }
+            }
+        }
+        if (porteros < 1 || defensas < 4 || medios < 4 || delanteros < 3 || entrenadores < 1) {
+            cout << "No se cumplen los requisitos para pasar a la siguiente temporada" << endl;
+            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, inténtalo de nuevo" << endl;
+            parametro = 0;
+        }
+        getNivelEquipo();
+        cout << "El nivel del equipo es: " << getNivelEquipo() << endl;
+        int resultaditos = getResultados();
+        cout << "El resultado de la temporada pasada fue: " << resultaditos << endl;
+        setResultados();
+        int resultados_nuevos = getResultados();
+        cout << "El resultado de la temporada actual es: " << resultados << endl;
+        setPresupuesto(resultados_nuevos);
         restar_sueldos();
         int contador = 0;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 34; i++) {
             if (plantilla[i] != nullptr) {
                 contador++;
             }
         }
-        if (contador <= 20 || contador >= 30) {
-            cout << "Se salió de los limites previamente establicidos" << endl;
-            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, intentalo de nuevo" << endl;
+        if (contador < 20 || contador > 30) {
+            cout << "Se salió de los límites previamente establecidos" << endl;
+            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, inténtalo de nuevo" << endl;
             parametro = 0;
         }
-        if (resultados <= resultaditos) {
-            cout << "Quedó en un lugar en la tabla inferior al que quedó en la temporada pasada" << endl;
-            cout << "En la temprada pasada quedo en el lugar " << resultaditos << " y en esta temporada quedo en el lugar " << resultados << endl;
-            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, intentalo de nuevo" << endl;
+        if (resultados_nuevos > resultaditos) {
+            cout << "Quedó en una posición inferior en la tabla con respecto a la temporada pasada" << endl;
+            cout << "En la temporada pasada quedó en el lugar " << resultaditos << " y en esta temporada quedó en el lugar " << resultados << endl;
+            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, inténtalo de nuevo" << endl;
             parametro = 0;
         }
         if (presupuesto <= 0) {
             cout << "Se quedó sin presupuesto" << endl;
-            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, intentalo de nuevo" << endl;
+            cout << "Queda oficialmente despedido como presidente del Cruz Azul FC, inténtalo de nuevo" << endl;
             parametro = 0;
         }
         if (resultados == 1) {
-            cout << "Felicidades, haz ganado la liga" << endl;
+            cout << "¡Felicidades! Has ganado la liga" << endl;
             cout << "Llevaste al Cruz Azul a su décima gloria" << endl;
-            cout << "Cumpliste el objetivo exitosamente, gracias por tu esfuerzo" << endl;
+            cout << "Has cumplido el objetivo exitosamente, gracias por tu" << 
+            "esfuerzo" << endl;
             parametro = 2;
         }
         return parametro;
@@ -414,13 +484,14 @@ class SistemaDatos {
         crea_plantilla_actual();
         setTraspasos();
         setNombresRandom();
+        resultados = 18;
+        presupuesto = 0;
     }
     //Constructor con parametros
     SistemaDatos(Colaborador * _plantilla[], int _resultados, double _nivel_equipo[]){
         setPlantilla(_plantilla);
         setPresupuesto(_resultados);
         setResultados(_resultados);
-        setNivelEquipo(_nivel_equipo);
     }
 
 };
