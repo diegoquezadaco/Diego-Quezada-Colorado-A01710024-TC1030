@@ -34,7 +34,7 @@ Recordemos que el objetivo de esta simulación es que el Cruz Azul se consagre c
 Para la obtención de estas posiciones, se hace una comparación de los puntos de todos los equipos de la liga y para los puntos del equipo se toma en cuenta el promedio de nivel de los jugadores y cuerpo técnico y es justo en base a los resultados obtenidos esta tabla de posiciones que se evalúa tu desempeño y también con el que se asigna el presupuesto para la siguiente temporada, este resultado puede variar entre el 1 y el 18.
 
 ## Funcionalidad:
--El programa termina de maneras diferentes:
+El programa termina de maneras diferentes:
   
   -Cuando se lográ quedar en primer lugar de la tabla de posiciones (caso triunfar)
   
