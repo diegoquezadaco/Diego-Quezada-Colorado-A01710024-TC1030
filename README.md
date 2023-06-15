@@ -52,21 +52,21 @@ Para la obtención de estas posiciones, se hace una comparación de los puntos d
 
 -El programa cuenta con un menu con las opciones iniciales, mediante el cual se puede:
 
--1: Mostrar los datos de la plantilla actualizados a contrataciones y despidos, asímismo te muestra el numero total de colaboradores actualizado
+- 1: Mostrar los datos de la plantilla actualizados a contrataciones y despidos, asímismo te muestra el numero total de colaboradores actualizado
 
--2: Consultar el presupuesto actual actualizado a los sueldos de nuevas contrataciones o a los sueldos de los que se despidieron
+- 2: Consultar el presupuesto actual actualizado a los sueldos de nuevas contrataciones o a los sueldos de los que se despidieron
 
--3: Contratar alguno de los colaboradores que se encuntra en la lista de traspasos, para agregarlos a tu plantilla
+- 3: Contratar alguno de los colaboradores que se encuntra en la lista de traspasos, para agregarlos a tu plantilla
 
--4: Despedir alguno de los colaboradores actuales de la plantilla (no muestra mensaje de error en caso de no encontarlo, pero muestra un mensaje de exito en caso de que si)
+- 4: Despedir alguno de los colaboradores actuales de la plantilla (no muestra mensaje de error en caso de no encontarlo, pero muestra un mensaje de exito en caso de que si)
 
--5: Mostrar los datos y estadisticas de un jugador en específico de la plantilla (no muestra mensaje de error en caso de no encontarlo, pero muestra un mensaje de exito en caso de que si)
+- 5: Mostrar los datos y estadisticas de un jugador en específico de la plantilla (no muestra mensaje de error en caso de no encontarlo, pero muestra un mensaje de exito en caso de que si)
 
--6: Subir un jugador de la cantera, seleccionando la posicion que el usuario desee y mostrar los datos y estadisticas de este nuevo jugador
+- 6: Subir un jugador de la cantera, seleccionando la posicion que el usuario desee y mostrar los datos y estadisticas de este nuevo jugador
 
--7: Con todos los cambios hechos en la plantilla, simula la temporada y muestra los resultados obtenidos y si la directiva desea seguir contando con sus servicios o no despues de evaluar sus resultados
+- 7: Con todos los cambios hechos en la plantilla, simula la temporada y muestra los resultados obtenidos y si la directiva desea seguir contando con sus servicios o no despues de evaluar sus resultados
 
--8: Salir del programa
+- 8: Salir del programa
 
 Sugerencia: Corrobora el tamaño de la plantilla y el presupuesto antes de pasar a la siguiente temporada
 
@@ -90,13 +90,13 @@ correr en windows: "a.exe"
 -Las funciones 4 y 5 no muestran mensajes de error en caso de que se haya insertado mal el input, sin embargo, si muestran un mensaje de exito en caso de que se haya insertado bien. De todas maneras es recomendable chacr la plantilla despues de haber efectuado cualquier cambio.
 
 ## Correcciones:
--Identifico los casos que harían que el proyecto deje de funcionar (SICT031A):
+- Identifico los casos que harían que el proyecto deje de funcionar (SICT031A):
 Se encuentra en este mismo README, en la sección de Restricciones o casos en los que el progama deja de funcionar
 
--Genero un diagrama de clases UML correcto y y explico su relación con el problema de forma clara (SICT031A):
+- Genero un diagrama de clases UML correcto y y explico su relación con el problema de forma clara (SICT031A):
 YA está corregido el archivo UML, se encuentra en los archivos de este repositorio, y esta completamente relacionado al código y las clases implementadas, se llama "UML Diego Quezada.pdf"
 
--Se implementa de manera correcta la sobrecarga y sobreescritura de métodos (SICT0303A):
+- Se implementa de manera correcta la sobrecarga y sobreescritura de métodos (SICT0303A):
 Ya se había validado la sobreescritura, como por ejemplo con el método estadísticas(int nivel), presente en Colaborador.h (linea 41), sus clases hijas: Entrenador.h (declaracion en linea 30 y defincion en lineas de 40 a 65), y Jugador.h (linea 35) y las clases hijas de Jugador: Defensivo.h (declaracion en linea 33 y defincion en lineas de 40 a 65), y Atacante.h (declaracion en linea 31 y defincion en lineas de 39 a 52).
 Para la sobrecarga, de igual maner hay varios ejemplos, pero la que más use fue la funcion double getPresupuesto() y double getPresupuesto(int resultados), en el archivo SistemaDatos.h (declaraciones en lineas 48 y 49 y definiciones en lineas de la 72 a la 98)
 
