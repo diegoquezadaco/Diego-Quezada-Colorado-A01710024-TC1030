@@ -82,12 +82,10 @@ int main() {
         //desee ver sus estadísticas
             string nombre;
             cout << "Ingresa el nombre del colaborador que deseas ver sus estadisticas: ";
-            cin >> nombre;
+            cin.ignore();
+            getline(cin, nombre);
             sistemita.buscar_colaborador(nombre);
-            cin.ignore(); 
-            cin.get(); 
             cout << "Presione ENTER para regresar al menu principal...";
-            cin.ignore(); 
             cin.get(); 
         } else if (opcion == 6) {
         //Solicita al usuario la posicion de la que le interesaria tener un

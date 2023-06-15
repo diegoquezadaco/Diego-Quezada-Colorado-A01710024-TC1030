@@ -584,6 +584,7 @@ void SistemaDatos::buscar_colaborador(string nombre) {
     for (int i = 0; i < 30; i++) {
         if (plantilla[i]->getNombre() == nombre) {
             plantilla[i]->mostrar_estadisticas();
+            break;
         }
     }
 }

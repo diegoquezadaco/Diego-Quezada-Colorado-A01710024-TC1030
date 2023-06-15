@@ -42,7 +42,7 @@ class Colaborador {
     virtual void setNivel()=0;
     void virtual mostrar_estadisticas()=0;
 
-    Colaborador(string _nom,string _tipo,int _niv, double _sueldo);
+    Colaborador(string _nombre,string _tipo,int _nivel, double _sueldo);
     Colaborador();
 
 };    
