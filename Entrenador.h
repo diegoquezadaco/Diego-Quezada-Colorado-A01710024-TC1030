@@ -32,6 +32,7 @@ class Entrenador : public Colaborador {
     void mostrar_estadisticas();
 
     Entrenador(string _nombre,string _tipo, int _nivel, double _sueldo);
+    Entrenador();
 
 };
 
