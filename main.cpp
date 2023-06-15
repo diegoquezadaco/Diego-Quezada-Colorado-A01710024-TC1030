@@ -1,11 +1,29 @@
-#include <iostream>
-#include <string>
-#include "SistemaDatos.h"
-#include "Colaborador.h"
-#include "Atacante.h"
-#include "Entrenador.h"
-#include "Jugador.h"
-#include "Defensivo.h"
+/**
+ * Proyecto Integrador - TC1030
+ * Proyecto presidente Cruz Azul FC
+ * Diego Quezada Colorado A01710024
+ * 08/06/2023   
+ */
+
+/**
+ * Este programa simula la administracion de un equipo de futbol, 
+ * específicamente el Cruz Azul FC, te permite contratar y despedir
+ * colaboradores, consultar el presupuesto, mostrar estadisticas de los
+ * colaboradores, subir canteranos y simular una temporada.
+ * El objetivo es que el usuario logre administrar el equipo de la mejor
+ * manera posible, para que el equipo logre ganar la liga.
+*/
+
+
+//Bibliotecas
+#include <iostream> //para imprimir
+#include <string> //para usar strings
+#include "SistemaDatos.h" //clase encargada de administrar los datos
+#include "Colaborador.h" //clase abstracta, padre de todas las demas
+#include "Atacante.h" //clase hija de jugador
+#include "Entrenador.h" //clase hija de colaborador
+#include "Jugador.h" //clase hija de colaborador
+#include "Defensivo.h" //clase hija de jugador
 
 using namespace std;
 
@@ -29,7 +47,6 @@ int main() {
         cout << "8. Salir" << endl;
         cout << "Ingresa el numero de la opcion que deseas realizar: ";
         cin >> opcion;
-        cin.ignore(); // Ignorar el ENTER presionado después de introducir la opción
         
         if (opcion == 1) {
             sistemita.imprimeDatos();
@@ -43,6 +60,7 @@ int main() {
             cin.get(); // Esperar a que se presione ENTER para continuar
         } else if (opcion == 3) {
             cout << "Ingresando al sistema de traspasos.. " << endl;
+            cout << "0" << endl;
             sistemita.contratar_colaborador();
             cout << "Presione ENTER para regresar al menú principal...";
             cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
@@ -55,7 +73,7 @@ int main() {
             getline(cin, nombre); // Leer el nombre del colaborador
             sistemita.despedir_colaborador(nombre);
             cout << "Presione ENTER para regresar al menú principal...";
-            cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
+            //cin.ignore(); // Ignorar cualquier caracter pendiente en el búfer de entrada
             cin.get(); // Esperar a que se presione ENTER para continuar
         } else if (opcion == 5) {
             string nombre;
