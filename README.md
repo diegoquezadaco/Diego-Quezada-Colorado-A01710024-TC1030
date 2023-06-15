@@ -94,7 +94,14 @@ correr en windows: "a.exe"
 Se encuentra en este mismo README, en la sección de Restricciones o casos en los que el progama deja de funcionar
 
 -Genero un diagrama de clases UML correcto y y explico su relación con el problema de forma clara (SICT031A):
-YA está corregido el archivo UML, se encuentra en los archivos de este repositorio, y esta completamente relacionado al código y las clases implementadas
+YA está corregido el archivo UML, se encuentra en los archivos de este repositorio, y esta completamente relacionado al código y las clases implementadas, se llama "UML Diego Quezada.pdf"
+
+-Se implementa de manera correcta la sobrecarga y sobreescritura de métodos (SICT0303A):
+Ya se había validado la sobreescritura, como por ejemplo con el método estadísticas(int nivel), presente en Colaborador.h (linea 41), sus clases hijas: Entrenador.h (declaracion en linea 30 y defincion en lineas de 40 a 65), y Jugador.h (linea 35) y las clases hijas de Jugador: Defensivo.h (declaracion en linea 33 y defincion en lineas de 40 a 65), y Atacante.h (declaracion en linea 31 y defincion en lineas de 39 a 52).
+Para la sobrecarga, de igual maner hay varios ejemplos, pero la que más use fue la funcion double getPresupuesto() y double getPresupuesto(int resultados), en el archivo SistemaDatos.h (declaraciones en lineas 48 y 49 y definiciones en lineas de la 72 a la 98)
+
+- Se implementa de manera correcta el concepto de Clases Abstractas (SICT0303A):
+La clase Colaborador.h es una clase abstracta, que cuenta con 3 métodos abstractos que son virtual void estadisticas(int _nivel)=0,virtual void setNivel()=0, y void virtual mostrar_estadisticas()=0. Definidos en este archivo en las lineas de la 41 a la 43 y sobreescritos por sus clases hijas (Jugador.h y Entrenador.h) y nietas (Defensivo.h y Atcante.h)
 
 
 
