@@ -585,10 +585,6 @@ void SistemaDatos::buscar_colaborador(string nombre) {
         if (plantilla[i]->getNombre() == nombre) {
             plantilla[i]->mostrar_estadisticas();
         }
-        else {
-            cout << "No se encontró al colaborador " << nombre 
-                    << " en la plantilla" << endl;
-        }
     }
 }
 /**
